@@ -1,7 +1,16 @@
+/* Team Sunbin -- Kate Johnston and Shaik Abden
+APCS1 pd10
+HW33 -- Do You Even Add, Bro?
+2015-11-18 */
+
 public class Rational {
+
+    // instance vars
 
     private int numerator;
     private int denominator;
+
+    // constructors
 
     public Rational() {
 	numerator = 0;
@@ -19,6 +28,8 @@ public class Rational {
 	    denominator = d;
 	}
     }
+
+    // methods
 
     public String toString() {
 	return numerator + " / " + denominator;

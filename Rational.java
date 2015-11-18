@@ -40,13 +40,17 @@ public class Rational {
     }
 
     public void multiply(Rational s) {
-	this.numerator *= s.numerator;
-	this.denominator *= s.denominator;
+	numerator *= s.numerator;
+	denominator *= s.denominator;
     }
 
     public void divide(Rational s) {
-	this.numerator /= s.numerator;
-	this.denominator /= s.denominator;
+	numerator /= s.numerator;
+	denominator /= s.denominator;
+    }
+
+    public void add(Rational s) {
+	
     }
 
 }

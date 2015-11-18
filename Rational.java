@@ -1,5 +1,5 @@
 public class Rational {
-
+    //Inst vars
     private int numerator;
     private int denominator;
 

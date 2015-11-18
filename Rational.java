@@ -71,8 +71,58 @@ public class Rational {
 	}
     }
 
-    public int gcd(Rational s) {
-	return 0;
+    public int gcd(){
+	int min;
+	int max;
+	int stor;
+	if ((numerator == 0) || (denominator == 0)){
+	    return 0;
+	}
+	else {
+	    if ( numerator >= denominator ) {
+		max = numerator;
+		min = denominator;
+	    }
+	    else {
+		max = denominator;
+		min = numerator;
+	    }
+	    while (min != 0){
+	        stor = min;
+		min = max % min;
+		max = stor;
+	    }
+	    return max;
+	}
+    }
+
+    public void reduce() {
+	int g = this.gcd();
+	if ( g != 0 ) {
+	    numerator /= g;
+	    denominator /= g;
+	}
+    }
+
+    public static void main( String[] args ) {
+
+	// testing!
+	
+	Rational a = new Rational(6,8);
+	System.out.println(a.gcd());
+	a.reduce();
+	System.out.println(a);
+	
+	Rational b = new Rational(5,5);
+	System.out.println(b.gcd());
+	b.reduce();
+	System.out.println(b);
+
+	Rational c = new Rational(13,11);
+	System.out.println(c.gcd());
+	c.reduce();
+	System.out.println(c);
+	
     }
 
 }

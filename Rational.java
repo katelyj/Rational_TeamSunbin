@@ -50,7 +50,29 @@ public class Rational {
     }
 
     public void add(Rational s) {
-	
+	if ( denominator == s.denominator ) {
+	    numerator += s.numerator;
+	}
+	else {
+	    numerator *= s.denominator;
+	    numerator += s.numerator * denominator;
+	    denominator *= s.denominator;
+	}
+    }
+
+    public void subtract(Rational s) {
+	if ( denominator == s.denominator ) {
+	    numerator -= s.numerator;
+	}
+	else {
+	    numerator *= s.denominator;
+	    numerator -= s.numerator * denominator;
+	    denominator *= s.denominator;
+	}
+    }
+
+    public int gcd(Rational s) {
+	return 0;
     }
 
 }

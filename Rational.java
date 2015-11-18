@@ -71,7 +71,7 @@ public class Rational {
 	}
     }
 
-    public int gcd(){ // finds greatest common denominator of number
+    public int gcd(){ // finds gcd of numerator and denominator
 	int min;
 	int max;
 	int stor;
@@ -95,6 +95,32 @@ public class Rational {
 	    return max;
 	}
     }
+
+    public static int gcds(int n, int d) { // finds gcd of two numbers
+	int min;
+	int max;
+	int stor;
+	if ((n == 0) || (d == 0)){
+	    return 0;
+	}
+	else {
+	    if ( n >= d ) {
+		max = n;
+		min = d;
+	    }
+	    else {
+		max = d;
+		min = n;
+	    }
+	    while (min != 0){
+	        stor = min;
+		min = max % min;
+		max = stor;
+	    }
+	    return max;
+	}
+    }
+
 
     public void reduce() { // reduces fraction to simplest form
 	int g = this.gcd();
@@ -140,6 +166,10 @@ public class Rational {
 	g.subtract(f);
 	g.reduce();
 	System.out.println(g);
+
+	System.out.println(gcds(5,6));
+        System.out.println(gcds(10,5));
+	System.out.println(gcds(100,6));
 	
     }
 

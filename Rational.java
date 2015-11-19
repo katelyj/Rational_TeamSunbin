@@ -130,6 +130,20 @@ public class Rational {
 	}
     }
 
+    public int compareTo(Rational r) { // compares numbers
+	double a = this.floatValue();
+	double b = r.floatValue();
+	if ( a == b ) {
+	    return 0;
+	}
+	else if ( a > b ) {
+	    return 1;
+	}
+	else {
+	    return -1;
+	}
+    }
+
     public static void main( String[] args ) { // main method
 
 	// testing!
@@ -157,6 +171,7 @@ public class Rational {
 	System.out.println(d);
 	e.subtract(d);
 	System.out.println(e);
+	System.out.println(d.compareTo(e));
 
 	Rational f = new Rational(5,6);
 	Rational g = new Rational(9,10);
@@ -166,6 +181,7 @@ public class Rational {
 	g.subtract(f);
 	g.reduce();
 	System.out.println(g);
+	System.out.println(g.compareTo(f));
 
 	System.out.println(gcds(5,6));
         System.out.println(gcds(10,5));

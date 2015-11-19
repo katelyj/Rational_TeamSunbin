@@ -5,18 +5,20 @@ HW33 -- Do You Even Add, Bro?
 
 public class Rational {
 
-    // instance vars
+    // instance vars denominator and numerator store the values of the numerator and denominator in this instance of class Rational
 
     private int numerator;
     private int denominator;
 
     // constructors
 
+    //Default constructor creates fraction 0/1, the most basic one
     public Rational() {
 	numerator = 0;
 	denominator = 1;
     }
 
+    //This overloaded construactor sets the numerator and denominaor to the args specified when making the class
     public Rational(int n, int d) {
 	if ( d == 0 ) {
 	    System.out.println("Nope.");
@@ -31,25 +33,25 @@ public class Rational {
 
     // methods
 
-    public String toString() { // returns the string representation of the number
+    public String toString() { // returns the string representation of the number using a / to represent the fraction
 	return numerator + " / " + denominator;
     }
 
-    public double floatValue() { // returns the float representation of the number
+    public double floatValue() { // returns the float representation of the number by dividing the two values and returning the float result
 	return numerator/(double)denominator;
     }
 
-    public void multiply(Rational s) { // multiplies numbers
+    public void multiply(Rational s) { // multiplies numbers by multiplying the individual numerators and denominators of the calling and current classes of Rational
 	numerator *= s.numerator;
 	denominator *= s.denominator;
     }
 
-    public void divide(Rational s) { // divides numbers
-	numerator /= s.numerator;
-	denominator /= s.denominator;
+    public void divide(Rational s) { // divides the fraction by multiplying the numerator by the denominator of the divsor and vice versa
+	numerator *= s.denominator;
+	denominator *= s.numerator;
     }
 
-    public void add(Rational s) { // adds numbers
+    public void add(Rational s) { // adds fractions. If the denominators are the same it just adds the numerator. In the other case, it multiplies the numerators by the denominators of the other fraction and then adds
 	if ( denominator == s.denominator ) {
 	    numerator += s.numerator;
 	}
@@ -60,7 +62,7 @@ public class Rational {
 	}
     }
 
-    public void subtract(Rational s) { // subtracts numbers
+    public void subtract(Rational s) { // Same approach as above but instead you subtract at the end
 	if ( denominator == s.denominator ) {
 	    numerator -= s.numerator;
 	}
@@ -71,7 +73,7 @@ public class Rational {
 	}
     }
 
-    public int gcd(){ // finds gcd of numerator and denominator
+    public int gcd(){ // finds gcd of numerator and denominator using Euilers method of constantly dividing the larger value by the smaller and restarting. Uses the numerator and denominator in the instance of the class
 	int min;
 	int max;
 	int stor;
@@ -96,7 +98,7 @@ public class Rational {
 	}
     }
 
-    public static int gcds(int n, int d) { // finds gcd of two numbers
+    public static int gcds(int n, int d) { // finds gcd in the same way as above, but instead takes in two args, numerator and denominator instead of using the inst vars.
 	int min;
 	int max;
 	int stor;
@@ -122,7 +124,7 @@ public class Rational {
     }
 
 
-    public void reduce() { // reduces fraction to simplest form
+    public void reduce() { // reduces fraction to simplest form by dividng the numerator and denominator by the result of gcd()
 	int g = this.gcd();
 	if ( g != 0 ) {
 	    numerator /= g;
@@ -130,7 +132,7 @@ public class Rational {
 	}
     }
 
-    public int compareTo(Rational r) { // compares numbers
+    public int compareTo(Rational r) { // compares numbers, returning 0 if equal, 1 if the current fraction is greater than the other fraction, and -1 when it is less.
 	double a = this.floatValue();
 	double b = r.floatValue();
 	if ( a == b ) {

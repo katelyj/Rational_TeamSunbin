@@ -147,7 +147,15 @@ public class Rational {
     }
 
     public boolean equals(Rational r) {
-        return this.reduce() == r.reduce();
+        boolean retVal = this == r; // checks for aliasing
+	this.reduce();
+	r.reduce();
+	if ( !retVal ) {
+	    retVal = r instanceof Rational
+		&& this.numerator == r.numerator
+		&& this.denominator == r.denominator;
+	}
+	return retVal;
     }
 
     public static void main( String[] args ) { // main method
@@ -188,6 +196,10 @@ public class Rational {
 	g.reduce();
 	System.out.println(g);
 	System.out.println(g.compareTo(f));
+
+	Rational h = new Rational(1,2);
+	Rational i = new Rational(2,4);
+	System.out.println(h.equals(i));
 
 	System.out.println(gcds(5,6));
         System.out.println(gcds(10,5));

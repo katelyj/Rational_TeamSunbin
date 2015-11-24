@@ -1,7 +1,7 @@
-/* Team Sunbin -- Kate Johnston and Shaik Abden
+/* Team Australopithecus -- Kate Johnston and Jason Mohabir
 APCS1 pd10
-HW33 -- Do You Even Add, Bro?
-2015-11-18 */
+HW37 -- Rational Equality
+2015-11-25 */
 
 public class Rational {
 
@@ -133,8 +133,8 @@ public class Rational {
     }
 
     public int compareTo(Rational r) { // compares numbers, returning 0 if equal, 1 if the current fraction is greater than the other fraction, and -1 when it is less.
-	double a = this.floatValue();
-	double b = r.floatValue();
+        int a = this.numerator * r.denominator;
+	int b = r.numerator * this.denominator;
 	if ( a == b ) {
 	    return 0;
 	}
@@ -144,6 +144,10 @@ public class Rational {
 	else {
 	    return -1;
 	}
+    }
+
+    public boolean equals(Rational r) {
+        return this.reduce() == r.reduce();
     }
 
     public static void main( String[] args ) { // main method
